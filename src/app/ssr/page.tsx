@@ -1,9 +1,12 @@
 import Container from "@/app/components/Container"
 import Header from "@/app/components/Header"
 import { Post } from "../types"
+import BackButton from "../components/BackButton"
 
 async function getPosts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    cache: "no-store",
+  })
   const data: Post[] = await res.json()
   return data
 }
@@ -13,6 +16,7 @@ export default async function SSR() {
   return (
     <Container>
       <Header>Server-Side Rendering</Header>
+      <BackButton />
       <ul className="flex flex-col gap-2">
         {posts.map((post) => (
           <li
