@@ -11,6 +11,7 @@ export default function Home() {
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
             href="/csr"
+            prefetch={false}
           >
             Client-Side Rendering
           </Link>
@@ -19,6 +20,7 @@ export default function Home() {
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
             href="/ssr"
+            prefetch={false}
           >
             Server-Side Rendering
           </Link>
