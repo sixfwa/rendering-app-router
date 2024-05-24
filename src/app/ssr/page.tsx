@@ -3,9 +3,7 @@ import Header from "@/app/components/Header"
 import { Post } from "../types"
 
 async function getPosts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    cache: "no-cache",
-  })
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts")
   const data: Post[] = await res.json()
   return data
 }
