@@ -1,30 +1,43 @@
 import Container from "@/app/components/Container"
 import Header from "@/app/components/Header"
-import { Post } from "../types"
-import BackButton from "../components/BackButton"
+import BackButton from "@/app/components/BackButton"
+import { cleanQuotes } from "@/app/helpers"
 
-async function getPosts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    cache: "no-store",
-  })
-  const data: Post[] = await res.json()
-  return data
+async function getQuotes() {
+  const res = await fetch(
+    `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE_ID}/query`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NOTION_SECRET_KEY}`,
+        "Content-Type": "application/json",
+        "Notion-Version": "2022-06-28",
+      },
+      method: "POST",
+      cache: "no-store",
+    }
+  )
+
+  const data = await res.json()
+
+  const quotes = cleanQuotes(data)
+
+  return quotes
 }
 
 export default async function SSR() {
-  const posts = await getPosts()
+  const quotes = await getQuotes()
   return (
     <Container>
       <Header>Server-Side Rendering</Header>
       <BackButton />
       <ul className="flex flex-col gap-2">
-        {posts.map((post) => (
+        {quotes.map((quote) => (
           <li
-            key={post.id}
+            key={quote.quote}
             className="p-3 border rounded border-neutral-700 flex flex-col gap-2"
           >
-            <h2 className="text-xl font-bold tracking-tight">{post.title}</h2>
-            <p className="text-neutral-200 tracking-wide">{post.body}</p>
+            <h2 className="tracking-wide">{quote.quote}</h2>
+            <p className="italic font-thin">{quote.author}</p>
           </li>
         ))}
       </ul>
