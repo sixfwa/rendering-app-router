@@ -37,7 +37,8 @@ export default function Home() {
         <li>
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
-            href="/"
+            href="/isr"
+            prefetch={false}
           >
             Incremental Static Regeneration
           </Link>

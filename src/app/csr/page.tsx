@@ -18,7 +18,7 @@ export default function CSR() {
   }, [])
   return (
     <Container>
-      <Header>Client-Side Rendering</Header>
+      <Header>Client Side Rendering</Header>
       <BackButton />
       <ul className="flex flex-col gap-2">
         {posts.map((post) => (

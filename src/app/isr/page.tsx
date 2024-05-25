@@ -13,7 +13,9 @@ async function getQuotes() {
         "Notion-Version": "2022-06-28",
       },
       method: "POST",
-      cache: "no-store",
+      next: {
+        revalidate: 60,
+      },
     }
   )
 
@@ -24,11 +26,11 @@ async function getQuotes() {
   return quotes
 }
 
-export default async function SSR() {
+export default async function ISR() {
   const quotes = await getQuotes()
   return (
     <Container>
-      <Header>Server Side Rendering</Header>
+      <Header>Incremental Static Generation</Header>
       <BackButton />
       <ul className="flex flex-col gap-2">
         {quotes.map((quote) => (
