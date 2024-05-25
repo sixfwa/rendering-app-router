@@ -13,7 +13,7 @@ export default function Home() {
             href="/csr"
             prefetch={false}
           >
-            Client-Side Rendering
+            Client Side Rendering
           </Link>
         </li>
         <li>
@@ -22,13 +22,14 @@ export default function Home() {
             href="/ssr"
             prefetch={false}
           >
-            Server-Side Rendering
+            Server Side Rendering
           </Link>
         </li>
         <li>
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
-            href="/"
+            href="/ssg"
+            prefetch={false}
           >
             Static Site Generation
           </Link>
