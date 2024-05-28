@@ -4,6 +4,7 @@ import BackButton from "@/app/components/BackButton"
 import { cleanQuotes } from "@/app/helpers"
 
 async function getQuotes() {
+  console.log("Fetching Data from Notion")
   const res = await fetch(
     `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE_ID}/query`,
     {
@@ -31,13 +32,13 @@ export default async function SSR() {
       <Header>Server Side Rendering</Header>
       <BackButton />
       <ul className="flex flex-col gap-2">
-        {quotes.map((quote) => (
+        {quotes.map(({ quote, author }) => (
           <li
-            key={quote.quote}
+            key={quote}
             className="p-3 border rounded border-neutral-700 flex flex-col gap-2"
           >
-            <h2 className="tracking-wide">{quote.quote}</h2>
-            <p className="italic font-thin">{quote.author}</p>
+            <h2 className="tracking-wide">{quote}</h2>
+            <p className="italic font-thin">{author}</p>
           </li>
         ))}
       </ul>
