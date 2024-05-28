@@ -11,7 +11,6 @@ export default function Home() {
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
             href="/csr"
-            prefetch={false}
           >
             Client Side Rendering
           </Link>
@@ -20,7 +19,6 @@ export default function Home() {
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
             href="/ssr"
-            prefetch={false}
           >
             Server Side Rendering
           </Link>
@@ -29,7 +27,6 @@ export default function Home() {
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
             href="/ssg"
-            prefetch={false}
           >
             Static Site Generation
           </Link>
@@ -38,7 +35,6 @@ export default function Home() {
           <Link
             className="border flex border-neutral-600 p-3 rounded hover:bg-neutral-800"
             href="/isr"
-            prefetch={false}
           >
             Incremental Static Regeneration
           </Link>
