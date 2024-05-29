@@ -15,9 +15,6 @@ async function getQuotes() {
       },
       method: "POST",
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 
