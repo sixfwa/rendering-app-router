@@ -4,7 +4,6 @@ import BackButton from "@/app/components/BackButton"
 import { cleanQuotes } from "@/app/helpers"
 
 async function getQuotes() {
-  console.log("Fetching Data from Notion")
   const res = await fetch(
     `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE_ID}/query`,
     {
